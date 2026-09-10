@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>Michael — Orthopaedic Surgery</title>
+<style>
+:root{
+  --bg:#f4f7fb;--surface:#fff;--surface2:#f8fafc;--ink:#0f172a;--muted:#64748b;
+  --line:#e2e8f0;--navy:#0b1220;--blue:#2563eb;--cyan:#0891b2;--green:#16a34a;
+  --amber:#d97706;--red:#dc2626;--purple:#7c3aed;--shadow:0 20px 60px rgba(15,23,42,.10);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#eef3f8 0,#f7f9fc 42%,#eef2f7 100%);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;color:var(--ink)}
+button,input{font:inherit}.app{min-height:100vh}
+.topbar{height:58px;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}.brandmark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#0f172a,#2563eb);display:grid;place-items:center;color:#fff;font-size:13px}
+.top-actions{display:flex;align-items:center;gap:10px}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:12px;color:#475569}
+.avatar{width:34px;height:34px;border-radius:50%;background:#dbeafe;color:#1d4ed8;display:grid;place-items:center;font-weight:800;font-size:12px}
+.shell{display:grid;grid-template-columns:240px 1fr;max-width:1500px;margin:auto;min-height:calc(100vh - 58px)}
+.sidebar{background:rgba(255,255,255,.72);border-right:1px solid var(--line);padding:22px 14px;position:sticky;top:58px;height:calc(100vh - 58px)}
+.nav-label{text-transform:uppercase;letter-spacing:.12em;color:#94a3b8;font-size:10px;font-weight:800;padding:12px 12px 8px}
+.nav button{width:100%;border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:10px;color:#475569;cursor:pointer;font-weight:650}
+.nav button:hover,.nav button.active{background:#eaf1ff;color:#1d4ed8}
+.side-note{margin-top:28px;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.side-note b{display:block;font-size:12px;margin-bottom:5px}.side-note span{font-size:11px;color:var(--muted);line-height:1.5}
+.main{padding:28px 30px 70px;min-width:0}
+.hero{display:flex;justify-content:space-between;gap:24px;align-items:flex-end;margin-bottom:24px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#64748b;font-weight:800}
+h1{font-size:34px;letter-spacing:-.04em;margin:5px 0 5px}.subtitle{color:var(--muted);font-size:14px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;font-weight:700;color:#334155;cursor:pointer}.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.btn:hover{transform:translateY(-1px)}
+.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
+.card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px rgba(15,23,42,.05);padding:18px}
+.stat-title{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.stat-value{font-size:27px;font-weight:800;letter-spacing:-.03em;margin-top:7px}.stat-foot{font-size:11px;color:#64748b;margin-top:6px}
+.cols{grid-template-columns:minmax(0,1.65fr) minmax(310px,.85fr)}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.section-title h2{font-size:15px;margin:0}.section-title span{font-size:11px;color:#94a3b8}
+.schedule{overflow:auto}.week{min-width:740px;display:grid;grid-template-columns:80px repeat(7,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.week>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:64px;padding:8px}.week>div:nth-child(8n){border-right:0}.day{background:#f8fafc;font-weight:800;font-size:11px}.day small{display:block;color:#94a3b8;font-weight:600;margin-top:3px}.time{font-size:10px;color:#94a3b8;background:#fbfdff}.event{font-size:10px;font-weight:800;border-radius:8px;padding:7px;margin:2px 0}.clinic{background:#eaf1ff;color:#1d4ed8}.or{background:#f0eafe;color:#6d28d9}.rounds{background:#e8f7ee;color:#15803d}.call{background:#fff4df;color:#b45309}.off{background:#f1f5f9;color:#64748b}.sport{background:#e7f7fb;color:#0e7490}
+.finance{display:grid;grid-template-columns:1fr 1fr;gap:12px}.finance-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #eef2f7;font-size:12px}.finance-row:last-child{border-bottom:0}.finance-row b{font-size:13px}.bar{height:8px;border-radius:999px;background:#eef2f7;overflow:hidden;margin-top:7px}.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#38bdf8)}
+.timeline{display:grid;gap:10px}.item{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:12px;border:1px solid #edf1f5;border-radius:12px;background:#fbfdff}.item time{font-size:11px;color:#94a3b8;font-weight:800}.item b{font-size:12px}.item p{margin:4px 0 0;color:#64748b;font-size:11px;line-height:1.45}
+.location{display:flex;gap:8px}.location button{flex:1;border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px;font-size:12px;font-weight:800;cursor:pointer}.location button.active{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
+.notice{margin-top:14px;padding:11px 12px;border-radius:10px;background:#f8fafc;color:#64748b;font-size:10px;line-height:1.5}
+.footer{margin-top:26px;color:#94a3b8;font-size:10px;text-align:center}
+.hidden{display:none!important}
+@media(max-width:1050px){.shell{grid-template-columns:1fr}.sidebar{display:none}.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:650px){.main{padding:20px 14px 50px}.topbar{padding:0 14px}.hero{display:block}.hero-actions{margin-top:15px}.stats{grid-template-columns:1fr 1fr}.stat-value{font-size:21px}.finance{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="brandmark">M</div><div>Michael <span style="color:#94a3b8">/</span> Orthopaedic Surgery</div></div>
+  <div class="top-actions"><div class="chip">September 2026</div><div class="chip">Private workspace</div><div class="avatar">MF</div></div>
+</header>
+
+<div class="shell">
+<aside class="sidebar">
+  <div class="nav-label">Workspace</div>
+  <div class="nav">
+    <button class="active" data-target="overview">Overview</button>
+    <button data-target="schedule">Schedule</button>
+    <button data-target="finances">Financials</button>
+    <button data-target="clinical">Clinical</button>
+  </div>
+  <div class="nav-label">Location</div>
+  <div class="location">
+    <button class="active" data-loc="NY">NY</button><button data-loc="TX">TX</button>
+  </div>
+  <div class="side-note"><b>Workspace status</b><span>Professional dashboard prototype. Connect your own authentication before production use.</span></div>
+</aside>
+
+<main class="main">
+<section id="overview">
+<div class="hero">
+  <div><div class="kicker">Physician operations dashboard</div><h1>Michael — Orthopaedic Surgery</h1><div class="subtitle">Sports Medicine · September 2026 · Weekly clinical and financial overview</div></div>
+  <div class="hero-actions"><button class="btn" onclick="window.print()">Print / PDF</button><button class="btn primary" onclick="alert('Authentication should be connected by you before production use.')">Sign in</button></div>
+</div>
+
+<div class="grid stats">
+  <div class="card"><div class="stat-title">Annual physician income</div><div class="stat-value">$620K</div><div class="stat-foot">Illustrative planning figure</div></div>
+  <div class="card"><div class="stat-title">Estimated assets</div><div class="stat-value">$2.485M</div><div class="stat-foot">Illustrative dashboard data</div></div>
+  <div class="card"><div class="stat-title">Clinical load</div><div class="stat-value">4.5 days</div><div class="stat-foot">Scheduled this week</div></div>
+  <div class="card"><div class="stat-title">Call status</div><div class="stat-value">Fri 18:00</div><div class="stat-foot">Weekend coverage begins</div></div>
+</div>
+
+<div class="grid cols">
+<div class="card" id="schedule">
+  <div class="section-title"><h2>September clinical schedule</h2><span>Clinic · OR · Rounds · Call · OFF</span></div>
+  <div class="schedule"><div class="week">
+    <div></div><div class="day">MON<small>Sep 7</small></div><div class="day">TUE<small>Sep 8</small></div><div class="day">WED<small>Sep 9</small></div><div class="day">THU<small>Sep 10</small></div><div class="day">FRI<small>Sep 11</small></div><div class="day">SAT<small>Sep 12</small></div><div class="day">SUN<small>Sep 13</small></div>
+    <div class="time">AM</div><div><div class="event clinic">Clinic · Sports Med</div></div><div><div class="event or">OR · ACL / Knee</div></div><div><div class="event rounds">Rounds · Inpatient</div></div><div><div class="event clinic">Clinic · Follow-up</div></div><div><div class="event sport">Sports Med · Team</div></div><div><div class="event off">OFF</div></div><div><div class="event off">OFF</div></div>
+    <div class="time">PM</div><div><div class="event clinic">Clinic · 13:00–17:00</div></div><div><div class="event or">OR · 13:00–17:30</div></div><div><div class="event clinic">Clinic · 13:00–17:00</div></div><div><div class="event rounds">Admin · Case Review</div></div><div><div class="event call">CALL · 18:00 →</div></div><div><div class="event call">CALL</div></div><div><div class="event call">CALL → 18:00</div></div>
+  </div></div>
+</div>
+
+<div class="card">
+  <div class="section-title"><h2>Today</h2><span id="todayLoc">New York</span></div>
+  <div class="timeline">
+    <div class="item"><time>07:00</time><div><b>Hospital rounds</b><p>Post-op review, discharge planning and inpatient consults.</p></div></div>
+    <div class="item"><time>09:30</time><div><b>Sports medicine clinic</b><p>New evaluations and return-to-play follow-ups.</p></div></div>
+    <div class="item"><time>13:00</time><div><b>Administrative block</b><p>Case review, imaging review and team coordination.</p></div></div>
+    <div class="item"><time>18:00</time><div><b>On-call coverage</b><p>Weekend coverage begins; urgent orthopaedic consults.</p></div></div>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="finances" style="margin-top:18px">
+<div class="grid cols">
+<div class="card">
+<div class="section-title"><h2>Financial overview</h2><span>Illustrative / fictional</span></div>
+<div class="finance">
+<div><div class="finance-row"><span>Retirement accounts</span><b>$795K</b></div><div class="bar"><i style="width:32%"></i></div></div>
+<div><div class="finance-row"><span>Primary residence equity</span><b>$620K</b></div><div class="bar"><i style="width:24%"></i></div></div>
+<div><div class="finance-row"><span>Other real estate</span><b>$445K</b></div><div class="bar"><i style="width:18%"></i></div></div>
+<div><div class="finance-row"><span>Broad-market investments</span><b>$275K</b></div><div class="bar"><i style="width:11%"></i></div></div>
+<div><div class="finance-row"><span>Liquid savings / cash</span><b>$200K</b></div><div class="bar"><i style="width:8%"></i></div></div>
+<div><div class="finance-row"><span>Higher-risk investments</span><b>$125K</b></div><div class="bar"><i style="width:5%"></i></div></div>
+</div>
+<div class="notice">Diversified presentation intended for a fictional dashboard prototype. It is not a real financial statement or investment recommendation.</div>
+</div>
+
+<div class="card">
+<div class="section-title"><h2>Clinical operations</h2><span>Sports medicine</span></div>
+<div class="timeline">
+<div class="item"><time>OR</time><div><b>Elective orthopaedic surgery</b><p>Planned sports-injury procedures, peri-operative coordination and post-op review.</p></div></div>
+<div class="item"><time>CLINIC</time><div><b>Musculoskeletal clinic</b><p>Consultations, imaging review, treatment planning and follow-up.</p></div></div>
+<div class="item"><time>ADMIN</time><div><b>Case conference</b><p>Multidisciplinary planning and quality-review workflow.</p></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="clinical" style="margin-top:18px">
+<div class="card">
+<div class="section-title"><h2>Workspace controls</h2><span>Production-ready direction</span></div>
+<div class="grid" style="grid-template-columns:repeat(3,1fr)">
+<div class="side-note"><b>Authentication</b><span>Use your own secure provider. Never put a password in HTML, JavaScript, GitHub, or client-side environment variables.</span></div>
+<div class="side-note"><b>Deployment</b><span>Designed for Next.js + Vercel with preview deployments, HTTPS and server-side environment variables.</span></div>
+<div class="side-note"><b>Privacy</b><span>Keep private residence details out of the public dashboard. Use city/state or a private profile label.</span></div>
+</div>
+</div>
+</section>
+
+<div class="footer">Michael Physician Dashboard · Advanced UI prototype · All financial figures are illustrative.</div>
+</main>
+</div>
+</div>
+
+<script>
+const nav=[...document.querySelectorAll('.nav button')];
+nav.forEach(b=>b.addEventListener('click',()=>{nav.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.target)?.scrollIntoView({behavior:'smooth',block:'start'})}));
+const locs=[...document.querySelectorAll('[data-loc]')];
+locs.forEach(b=>b.addEventListener('click',()=>{locs.forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('todayLoc').textContent=b.dataset.loc==='NY'?'New York':'Texas'}));
+</script>
+</body>
+</html>
